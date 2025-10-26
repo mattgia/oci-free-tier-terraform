@@ -1,6 +1,6 @@
 # Create a Virtual Cloud Network (VCN)
 resource "oci_core_vcn" "vcn" {
-  compartment_id = var.compartment_id
+  compartment_id = var.tenancy_ocid
   cidr_block     = "10.0.0.0/16"
   display_name   = "my-vcn"
   dns_label      = "myvcn"

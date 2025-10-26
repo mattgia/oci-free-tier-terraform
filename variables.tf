@@ -1,7 +1,4 @@
-variable "compartment_id" {
-  description = "OCID of the compartment where the instance will be created"
-  type        = string
-}
+# We'll use the tenancy OCID as the root compartment ID, which is provided via the OCI_TENANCY_OCID environment variable
 
 # Removed availability_domain variable as we're using data source
 

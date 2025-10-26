@@ -1,6 +1,6 @@
 # Get the latest Oracle Linux 8 image
 data "oci_core_images" "os_images" {
-  compartment_id           = var.compartment_id
+  compartment_id           = var.tenancy_ocid
   operating_system         = "Oracle Linux"
   operating_system_version = "9"
   shape                    = "VM.Standard.A1.Flex"  # Free tier eligible shape
