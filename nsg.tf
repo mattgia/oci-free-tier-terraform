@@ -22,6 +22,22 @@ resource "oci_core_network_security_group" "bastion_nsg" {
   display_name   = "bastion-nsg"
 }
 
+# Add a security rule to the bastion NSG to allow SSH from anywhere (you should restrict this to your IP)
+resource "oci_core_network_security_group_security_rule" "bastion_nsg_ingress_ssh" {
+  network_security_group_id = oci_core_network_security_group.bastion_nsg.id
+  direction                 = "INGRESS"
+  protocol                  = "6" # TCP
+  source                    = "0.0.0.0/0"  # You should restrict this to your IP address
+  source_type               = "CIDR_BLOCK"
+  
+  tcp_options {
+    destination_port_range {
+      min = 22
+      max = 22
+    }
+  }
+}
+
 
 
 # Add a security rule to the instance NSG to allow SSH traffic from the bastion
