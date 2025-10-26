@@ -8,7 +8,7 @@ resource "oci_core_vcn" "vcn" {
 
 # Create a subnet
 resource "oci_core_subnet" "subnet" {
-  compartment_id    = var.compartment_id
+  compartment_id    = var.tenancy_ocid
   vcn_id           = oci_core_vcn.vcn.id
   cidr_block       = "10.0.1.0/24"
   display_name     = "private-subnet"
@@ -19,7 +19,7 @@ resource "oci_core_subnet" "subnet" {
 
 # Create a security list
 resource "oci_core_security_list" "security_list" {
-  compartment_id = var.compartment_id
+  compartment_id = var.tenancy_ocid
   vcn_id         = oci_core_vcn.vcn.id
   display_name   = "security-list"
 
@@ -45,7 +45,7 @@ resource "oci_core_security_list" "security_list" {
 
 # Create a route table
 resource "oci_core_route_table" "route_table" {
-  compartment_id = var.compartment_id
+  compartment_id = var.tenancy_ocid
   vcn_id         = oci_core_vcn.vcn.id
   display_name   = "route-table"
 
