@@ -32,6 +32,15 @@ resource "oci_core_instance" "free_instance" {
     nsg_ids          = [oci_core_network_security_group.instance_nsg.id]
   }
 
+  agent_config {
+    is_monitoring_disabled = false
+    is_management_disabled = false
+    plugins_config {
+      name = "Bastion"
+      desired_state = "ENABLED"
+    }
+  }
+
   metadata = {
     ssh_authorized_keys = var.ssh_public_key
   }
