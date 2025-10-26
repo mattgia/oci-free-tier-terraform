@@ -27,7 +27,7 @@ resource "oci_core_instance" "free_instance" {
   }
 
   create_vnic_details {
-    subnet_id        = var.subnet_id
+    subnet_id        = oci_core_subnet.subnet.id
     assign_public_ip = false  # Disabled public IP assignment
   }
 

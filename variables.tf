@@ -8,10 +8,7 @@ variable "availability_domain" {
   type        = string
 }
 
-variable "subnet_id" {
-  description = "The OCID of the subnet to create the VNIC in"
-  type        = string
-}
+# Removed subnet_id variable as we're creating the subnet in network.tf
 
 variable "ssh_public_key" {
   description = "SSH public key for instance access"
