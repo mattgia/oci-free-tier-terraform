@@ -10,7 +10,7 @@ data "oci_core_images" "os_images" {
 
 # Create compute instance
 resource "oci_core_instance" "free_instance" {
-  availability_domain = var.availability_domain
+  availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
   compartment_id      = var.compartment_id
   display_name        = "free-tier-instance"
   
@@ -38,7 +38,7 @@ resource "oci_core_instance" "free_instance" {
 
 # Create a 100GB block volume
 resource "oci_core_volume" "persistent_volume" {
-  availability_domain = var.availability_domain
+  availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
   compartment_id      = var.compartment_id
   display_name        = "persistent-storage"
   size_in_gbs        = 100

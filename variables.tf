@@ -3,10 +3,7 @@ variable "compartment_id" {
   type        = string
 }
 
-variable "availability_domain" {
-  description = "The Availability Domain of the instance"
-  type        = string
-}
+# Removed availability_domain variable as we're using data source
 
 # Removed subnet_id variable as we're creating the subnet in network.tf
 
