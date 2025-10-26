@@ -121,6 +121,41 @@ sudo mount /dev/sdb /data
 echo '/dev/sdb /data xfs defaults 0 0' | sudo tee -a /etc/fstab
 ```
 
+## Accessing Your Instance
+
+Since the instance is created in a private subnet without a public IP, access is provided through Oracle Cloud's Bastion Service. The free tier includes:
+- 5 bastion sessions per month
+- Maximum session duration of 3 hours
+- Managed by Oracle (no maintenance required)
+
+### Using the Bastion Service
+
+1. After applying the Terraform configuration, go to the OCI Console:
+   - Navigate to Identity & Security → Bastion
+   - Click on your bastion (named "private-subnet-bastion")
+   - Click "Create Session"
+
+2. Configure the session:
+   - Choose "SSH Port Forwarding Session"
+   - Enter your instance's private IP (available in Terraform outputs)
+   - Enter port 22
+   - Choose session TTL (up to 3 hours)
+   - Click "Create Session"
+
+3. Use the provided SSH command:
+   - The console will provide a command that looks like:
+     ```bash
+     ssh -i <private_key_path> -o ProxyCommand='ssh -i <private_key_path> -W %h:%p ocid1.bastionsession.oc1...' <username>@<private_ip>
+     ```
+   - Replace `<private_key_path>` with your SSH private key path
+   - The username for Oracle Linux is `opc`
+
+### Session Limitations
+- Free tier includes 5 sessions per month
+- Each session can last up to 3 hours
+- Additional sessions cost $0.01 per session per hour
+- After session expiry, you'll need to create a new session
+
 ## Cleanup
 
 To destroy all created resources:
