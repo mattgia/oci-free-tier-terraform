@@ -29,6 +29,7 @@ resource "oci_core_instance" "free_instance" {
   create_vnic_details {
     subnet_id        = oci_core_subnet.subnet.id
     assign_public_ip = false  # Disabled public IP assignment
+    nsg_ids          = [oci_core_network_security_group.instance_nsg.id]
   }
 
   metadata = {
