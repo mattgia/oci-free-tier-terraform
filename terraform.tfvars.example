@@ -3,5 +3,5 @@ tenancy_ocid     = "ocid1.tenancy.oc1..example"
 user_ocid        = "ocid1.user.oc1..example"
 fingerprint      = "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
 private_key_path = "~/.oci/oci_api_key.pem"
-region           = "us-ashburn-1"  # or your preferred region
+region           = "ca-toronto-1"  # Toronto region
 ssh_public_key   = "ssh-rsa AAAA...example"  # Your SSH public key

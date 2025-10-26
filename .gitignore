@@ -29,3 +29,5 @@ terraform.rc
 # Ignore private keys and certificates
 *.pem
 *.key
+
+keys
