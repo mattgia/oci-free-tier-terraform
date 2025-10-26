@@ -5,3 +5,9 @@ fingerprint      = "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
 private_key_path = "~/.oci/oci_api_key.pem"
 region           = "ca-toronto-1"  # Toronto region
 ssh_public_key   = "ssh-rsa AAAA...example"  # Your SSH public key
+
+
+# for terraform state storage
+bucket          = ""
+key             = ""
+namespace       = ""
