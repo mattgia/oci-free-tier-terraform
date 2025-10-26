@@ -9,12 +9,15 @@ terraform {
 
 variable "tenancy_ocid" {}
 
+variable "user_ocid" {}
+variable "fingerprint" {}
+variable "private_key_path" {}
+variable "region" {}
+
 provider "oci" {
-  # Authentication details will be configured via environment variables or config file
-  tenancy_ocid = var.tenancy_ocid  # This will be used as our root compartment
-  # Other auth details from environment variables:
-  # OCI_USER_OCID
-  # OCI_FINGERPRINT
-  # OCI_PRIVATE_KEY_PATH
-  # OCI_REGION
+  tenancy_ocid     = var.tenancy_ocid
+  user_ocid        = var.user_ocid
+  fingerprint      = var.fingerprint
+  private_key_path = var.private_key_path
+  region           = var.region
 }
